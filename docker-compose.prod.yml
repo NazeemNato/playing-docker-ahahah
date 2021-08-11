@@ -1,0 +1,13 @@
+version: "3"
+services:
+  first-server:
+    build:
+      context: .
+      args: 
+        NODE_ENV: production
+    ports: 
+      - "8001:8001"
+    environment: 
+      - PORT=8001
+      - NODE_ENV=production
+    command: node index.js
