@@ -1,10 +1,14 @@
 FROM node:14-alpine
 
-WORKDIR /src
-COPY package.json package-lock.json /src/
-RUN npm install --production
+WORKDIR /app
 
-COPY . /src
+COPY package.json .
 
-EXPOSE 8000
-CMD ["node","index.js"]
+RUN npm install
+
+COPY . ./
+
+ENV PORT 8001
+EXPOSE $PORT
+
+CMD ["npm", "run" ,"dev"]
